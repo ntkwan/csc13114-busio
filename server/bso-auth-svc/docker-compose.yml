@@ -3,7 +3,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        container_name: bkb-auth-service-dev
+        container_name: bso-auth-service-dev
         restart: unless-stopped
         ports:
             - '${PORT}:${PORT}'
@@ -33,12 +33,12 @@ services:
             redis:
                 condition: service_healthy
         networks:
-            - bkb-auth-network
+            - bso-auth-network
         command: npm run start:debug
 
     postgres:
         image: postgres:15-alpine
-        container_name: bkb-auth-db-dev
+        container_name: bso-auth-db-dev
         restart: unless-stopped
         environment:
             POSTGRES_DB: ${DB_DATABASE}
@@ -49,22 +49,22 @@ services:
         volumes:
             - postgres_auth_dev_data:/var/lib/postgresql/data
         networks:
-            - bkb-auth-network
+            - bso-auth-network
         healthcheck:
-            test: ['CMD-SHELL', 'pg_isready -U postgres -d bkb_users']
+            test: ['CMD-SHELL', 'pg_isready -U postgres -d bso_users']
             interval: 30s
             timeout: 10s
             retries: 3
 
     redis:
         image: redis:7-alpine
-        container_name: bkb-auth-redis-dev
+        container_name: bso-auth-redis-dev
         ports:
             - '${REDIS_PORT}:6379'
         volumes:
             - redis_auth_dev_data:/data
         networks:
-            - bkb-auth-network
+            - bso-auth-network
         restart: unless-stopped
         healthcheck:
             test: ['CMD', 'redis-cli', 'ping']
@@ -74,7 +74,7 @@ services:
             start_period: 30s
 
 networks:
-    bkb-auth-network:
+    bso-auth-network:
         driver: bridge
 
 volumes:

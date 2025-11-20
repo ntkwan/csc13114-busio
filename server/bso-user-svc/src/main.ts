@@ -1,12 +1,12 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
 
-    // Global validation pipe
+    // Enable validation pipes globally
     app.useGlobalPipes(
         new ValidationPipe({
             transform: true,
@@ -17,15 +17,15 @@ async function bootstrap() {
 
     // Swagger configuration
     const config = new DocumentBuilder()
-        .setTitle('BSO Auth Service')
-        .setDescription('Auth service API for BSO application')
+        .setTitle('BSO User Service')
+        .setDescription('User service API for BSO application')
         .setVersion('1.0')
-        .addBearerAuth()
+        .addTag('users')
         .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('docs', app, document);
 
-    const port = process.env.PORT || 3001;
+    const port = process.env.PORT || 3000;
     await app.listen(port);
     console.log(`Application is running on: http://localhost:${port}`);
     console.log(

@@ -1,4 +1,4 @@
-# Compiled output
+# compiled output
 /dist
 /node_modules
 
@@ -39,9 +39,4 @@ lerna-debug.log*
 .env.local
 .env.development.local
 .env.test.local
-.env.production.local
-index.html
-bso-service-account-key.json
-
-# TypeScript
-*.tsbuildinfo
+.env.production.local 

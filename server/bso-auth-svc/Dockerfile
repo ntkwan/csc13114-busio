@@ -62,7 +62,7 @@ RUN npm install
 
 COPY . .
 
-COPY bkb-service-account-key.json .
+COPY bso-service-account-key.json .
 
 RUN mkdir -p logs
 
