@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-primary01: #c2a68c;
+    --color-primary02: #5d866c;
+    --color-secondary01: #e6d8c3;
+    --color-secondary02: #f5f5f0;
+    --color-border01: #d2d2d2;
+    --color-border02: #e7e7e7;
+    --color-text: #696969;
+    --color-subtext: #a9a9a9;
+    --color-background: #ffffff;
+    --color-foreground: #171717;
+
+    --font-sans: var(--font-cabin), 'Cabin';
+    --font-ranchers: var(--font-ranchers), 'Ranchers';
+
+    --spacing-container-x: 7.25rem;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-cabin);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+img {
+    user-select: none;
+}
+
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+@layer utilities {
+    .container {
+        margin: 0 auto;
+        padding-left: var(--spacing-container-x);
+        padding-right: var(--spacing-container-x);
+    }
+
+    .main-content {
+        padding-top: 130px;
+    }
+
+    .content {
+        padding-top: 90px;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
+
+@media (width >= 96rem) {
+    .container {
+        max-width: 90rem;
+    }
+}
+
+/* Custom Toast Styles */
+.Toastify__toast {
+    font-family: var(--font-cabin);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.Toastify__toast--success {
+    background-color: #34d399;
+}
+
+.Toastify__toast--error {
+    background-color: #ef4444;
+}
+
+.Toastify__toast--info {
+    background-color: var(--color-primary01);
+}
+
+.Toastify__toast--warning {
+    background-color: var(--color-primary02);
+}
+
+.Toastify__progress-bar--success {
+    background: #059669;
+}
+
+.Toastify__progress-bar--error {
+    background: #dc2626;
+}
+
+.Toastify__progress-bar--info {
+    background: #4a6fa5;
+}
+
+.Toastify__progress-bar--warning {
+    background: #f97316;
+}
